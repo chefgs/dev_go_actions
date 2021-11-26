@@ -32,8 +32,6 @@ jobs:
 
     - name: Go Linting Code Review
       uses: reviewdog/action-golangci-lint@v2
-      with:
-          golangci_lint_flags: '--enable-all --exclude-use-default=false'
       
     - name: Build
       run: |
