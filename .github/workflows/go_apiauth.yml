@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Check out code into the Go module directory
+    - name: Check out code to Build
       uses: actions/checkout@v2
       
     - name: Install Go and Run Code Linting
