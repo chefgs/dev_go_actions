@@ -1,4 +1,4 @@
-# GitHub + Dev Community Hackathon
+# GitHub Actions Hackathon by Dev Community
 
 ## Go Continuous Integration workflow
 - The workflow we created is doing the Continuous Integration process on this repository.
@@ -16,8 +16,23 @@ We levergaed existing actions in this workflow from [GitHub Actions Marketplace]
 2. `reviewdog/action-golangci-lint@v2` - Go installation and linting [action](https://github.com/marketplace/actions/run-golangci-lint-with-reviewdog).
 3. `mr-smithers-excellent/docker-build-push@v5` - Docker build and push [action[(https://github.com/marketplace/actions/docker-build-push-action).
 
+## How to Add GitHub Actions workflow
+- Our workflow gets created in `.githuh/workflows` as an `.yaml` file
+### Method 1:
+- We can find `Actions` tab on the repo
+- Click on the tab and choose `New Worflow`
+- Choose workflow from the pre-defined template
 
-**Now let's see the details about the code and it's functionality.**
+or 
+
+### Method 2:
+- Create workflow for yourself from scratch using the [documentation guide](https://docs.github.com/en/actions/quickstart#introduction)
+
+> *Enjoy coding the GitHub Workflow for the repo*  
+
+---
+
+**Now let's see the details about the code and it's functionality...**
 ## Go Source Code Details
 
 ## Objective
