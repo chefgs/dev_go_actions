@@ -1,4 +1,4 @@
-# GitHub Actions x Dev Community Hackathon
+# GitHub + Dev Community Hackathon
 
 ## Go Continuous Integration workflow
 - The workflow we created is doing the Continuous Integration process on this repository.
