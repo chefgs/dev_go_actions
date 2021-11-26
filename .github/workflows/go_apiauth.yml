@@ -1,4 +1,4 @@
-name: Go_Src_apiauth
+name: Go_CI_Workflow
 
 on:
   push:
