@@ -1,7 +1,7 @@
 # GitHub Actions Hackathon by Dev Community
 
 ## Go Continuous Integration workflow
-- The workflow we created is doing the Continuous Integration process on this repository.
+- The workflow is doing the Continuous Integration process on this Go code repository.
 - Below are the details of this workflow
   - Code checkout into the workspace
   - Install Go executable and runs the Go linting process for doing code review
