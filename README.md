@@ -1,4 +1,5 @@
 ## Table of Contents
+- [Build Status](#build-status)
 - [Introduction](#introduction)
 - [My Workflow](#my-workflow)
 - [Submission Category](#submission-category)
@@ -8,6 +9,9 @@
   - [How to Add GitHub Actions workflow](#how-to-add-github-actions-workflow)
   - [Go Source Code Details](#go-source-code-details)
   - [Go REST API Unit testing](#go-rest-api-unit-testing)
+
+## Build Status
+![GO CI workflow](https://github.com/chefgs/dev_go_actions/actions/workflows/go_apiauth.yml/badge.svg)
 
 ## Introduction
 - Created a GitHub Actions workflow for the submission of `actionshackathon21` 
