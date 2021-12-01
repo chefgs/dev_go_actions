@@ -100,9 +100,9 @@ jobs:
 - Here is how it runs the workflow and it can be viewable from the `Actions` tab
 ![Go CI Run](https://github.com/chefgs/repo_images/blob/master/GO_CI_workflowRun.png?raw=true)
 
-## Additional Info
-Developer - Saravanan G ([chefgs](https://github.com/chefgs))
 ___
+## Additional Info
+
 **Other details that might be helpful to users starting to write GitHub Actions**
 
 ## How to Add GitHub Actions workflow
