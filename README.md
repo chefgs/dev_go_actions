@@ -14,7 +14,7 @@
 ![GO CI workflow](https://github.com/chefgs/dev_go_actions/actions/workflows/go_apiauth.yml/badge.svg)
 
 ## Introduction
-- Created a GitHub Actions workflow for the submission of `actionshackathon21` 
+- Created a GitHub Actions workflow for the submission of Dev.to  `actionshackathon21` 
 - This action performs the Go continuous integration process on the Go source code repository
 - Interested *Go developers and DevOps Engineers* can use this workflow to create the `Continuous Integration` for their GitHub repo
 
