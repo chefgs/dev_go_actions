@@ -19,6 +19,7 @@ jobs:
       uses: reviewdog/action-golangci-lint@v2
       
     - name: Get dependencies to Build
+      id: Get dependencies to Build
       run: |
         go get -v -t -d ./...
         if [ -f Gopkg.toml ]; then
@@ -27,14 +28,17 @@ jobs:
         fi
       
     - name: Build Code
+      id: Build Code
       run: |
         go build -v .
         
     - name: Unit Test
+      id: Unit Test Run
       run: |
         go test
 
     - name: Build & push Docker image
+      id: Build and push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: gsdockit/goapiauth
@@ -44,7 +48,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         
-    - name: Post Action Workflow updates to Slack
+    - name: Posting Action Workflow updates to Slack
       uses: act10ns/slack@v1
       with: 
         status: ${{ job.status }}
