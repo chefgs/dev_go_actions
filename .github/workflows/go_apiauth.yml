@@ -16,10 +16,11 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Install Go and Run Code Linting
+      id: Install-Go
       uses: reviewdog/action-golangci-lint@v2
       
     - name: Get dependencies to Build
-      id: Get dependencies to Build
+      id: Get-dependencies-to-Build
       run: |
         go get -v -t -d ./...
         if [ -f Gopkg.toml ]; then
@@ -28,17 +29,17 @@ jobs:
         fi
       
     - name: Build Code
-      id: Build Code
+      id: Build-Code
       run: |
         go build -v .
         
     - name: Unit Test
-      id: Unit Test Run
+      id: Unit-Test-Run
       run: |
         go test
 
     - name: Build & push Docker image
-      id: Build and push Docker Image
+      id: Build-and-Push-Docker-Image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: gsdockit/goapiauth
