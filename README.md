@@ -7,6 +7,7 @@
 - [GitHub Action Workflow Run Output](#github-action-workflow-run-output)
 - [Additional Info](#additional-info)
   - [How to Add GitHub Actions workflow](#how-to-add-github-actions-workflow)
+  - [How to Integrate Slack with GitHub Actions Workflow](#how-to-integrate-slack-with-github-actions-workflow)
   - [Go Source Code Details](#go-source-code-details)
   - [Go REST API Unit testing](#go-rest-api-unit-testing)
 
@@ -37,6 +38,7 @@ I've leveraged existing actions available from [GitHub Actions Marketplace](http
 - `actions/checkout@v2` - [Action](https://github.com/marketplace/actions/checkout) that is used to checkout code. 
 - `reviewdog/action-golangci-lint@v2` - Go installation and linting [action](https://github.com/marketplace/actions/run-golangci-lint-with-reviewdog).
 - `mr-smithers-excellent/docker-build-push@v5` - Docker build and push [action](https://github.com/marketplace/actions/docker-build-push-action).
+- `act10ns/slack@v1` - Slack GitHub Action Integration [action](https://github.com/marketplace/actions/slack-github-actions-slack-integration)
 
 ## Submission Category 
 - **DIY Deployments** 
