@@ -28,7 +28,8 @@
   - Get the build dependencies
   - Builds the code
   - Runs the Unit test, if it is success it moves to next stage
-  - Finally docker image is created for the code and pushed into `docker hub` registry 
+  - Docker image is created for the code and pushed into `docker hub` registry 
+  - Finally workflow posts the status of each step to a `slack channel`
 - [Here is the link](github https://github.com/chefgs/dev_go_actions/blob/main/.github/workflows/go_apiauth.yml ) to the GitHub actions workflow `Yaml`
 
 ### Marketplace GitHub Actions used in this Workflow 
@@ -57,14 +58,15 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-
     - name: Check out code to Build
       uses: actions/checkout@v2
       
     - name: Install Go and Run Code Linting
+      id: Install-Go
       uses: reviewdog/action-golangci-lint@v2
       
     - name: Get dependencies to Build
+      id: Get-dependencies-to-Build
       run: |
         go get -v -t -d ./...
         if [ -f Gopkg.toml ]; then
@@ -73,14 +75,17 @@ jobs:
         fi
       
     - name: Build Code
+      id: Build-Code
       run: |
         go build -v .
         
     - name: Unit Test
+      id: Unit-Test-Run
       run: |
         go test
 
     - name: Build & push Docker image
+      id: Build-and-Push-Docker-Image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: gsdockit/goapiauth
@@ -89,7 +94,16 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
+        
+    - name: Posting Action Workflow updates to Slack
+      uses: act10ns/slack@v1
+      with: 
+        status: ${{ job.status }}
+        steps: ${{ toJson(steps) }}
+        channel: '#github-updates'
+      if: always()
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
 
 - The full source code can be accessible in this [GitHub repo](https://github.com/chefgs/dev_go_actions)
@@ -122,7 +136,31 @@ or
 > *Enjoy creating the GitHub Workflow*  
 
 ---
+## How to Integrate Slack with GitHub Actions Workflow
+Here is the list of steps to integrate slack with github actions,
 
+- Add `github` app to the slack channel
+- Add `incoming webhook` app and pick `webhook url` and keep it
+- Run the below command in slack channel to `subscribe` to repo updates. (while adding, it asks for auth with github and we choose repo) 
+```
+/github subscribe user/repo
+```
+- Add `incoming webhook URL` as `secret` in the specific repo we want to get updates
+- Add the below code at the end of Action workflow to get the job updates in slack
+```
+  - name: Posting Action Workflow updates to Slack
+      uses: act10ns/slack@v1
+      with: 
+        status: ${{ job.status }}
+        steps: ${{ toJson(steps) }}
+        channel: '#system-tester'
+      if: always()
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+```
+- Each steps in workflow should have `id: step-name` to get the status of the step in Slack update
+
+---
 **Now let's see the details about the code and it's functionality...**
 ## Go Source Code Details
 
