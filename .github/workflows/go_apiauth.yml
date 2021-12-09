@@ -43,3 +43,13 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: Post Action Workflow updates to Slack
+      uses: act10ns/slack@v1
+      with: 
+        status: ${{ job.status }}
+        steps: ${{ toJson(steps) }}
+      if: always()
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
