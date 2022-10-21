@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Install Go and Run Code Linting
-      id: Install-Go
+      id: Install-Go-and-Lint-Check
       uses: reviewdog/action-golangci-lint@v2
       
     - name: Get dependencies to Build
